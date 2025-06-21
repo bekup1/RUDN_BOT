@@ -34,7 +34,16 @@ def dorm_keyboard():
 
     builder.row(
     InlineKeyboardButton(text="📁 Докуемнты для заселения", callback_data="dorm_docs"),
-    InlineKeyboardButton(text="🔙 Назад", callback_data="back")
+    InlineKeyboardButton(text="🪜 Пошаговые действия для заселения", callback_data="dorm_steps_get"),
+    InlineKeyboardButton(text="💰 Оплата общежития", callback_data="dorm_pay"),   
+    InlineKeyboardButton(text="🔙 Назад", callback_data="back"),
+    width=1
     )
 
     return builder.as_markup()
+
+def back_to_dorm_keyboard():
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="dorm")]
+    ])
+    return keyboard
