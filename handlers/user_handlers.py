@@ -5,7 +5,7 @@ from lexicon.lexicon_ru import LEXICON_RU
 import logging
 from logging_setting.logging import setup_logging
 from keyboards.main_keyboard import main_menu_keyboard
-from keyboards.admission_keyboards import main_admission_keyboard
+from keyboards.admission_keyboards import main_admission_keyboard, dorm_keyboard
 
 
 router = Router()
@@ -21,3 +21,12 @@ async def process_button_2_press(callback: CallbackQuery):
         reply_markup= main_admission_keyboard()
     )
 
+
+@router.callback_query(F.data == 'dorm')
+async def process_button_2_press(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text='нажмите на общежитиу чтобы посмотреть ифнормацию о общежитии или посмотрите универсальный список документов для заселения',
+        reply_markup= dorm_keyboard()
+    )
+
+    

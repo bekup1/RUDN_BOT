@@ -19,5 +19,22 @@ def main_admission_keyboard():
         InlineKeyboardButton(text="🔙 Назад", callback_data="back")
     )
     
+    builder.adjust(1,1,1,1)
     
+    return builder.as_markup()
+
+def dorm_keyboard():
+    builder = InlineKeyboardBuilder()
+
+    inline_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text=f'Общежитие_{i + 1}', callback_data=f'dorm_{i+1}') for i in range(15) 
+    ]
+
+    builder.row(*inline_buttons,width=3)
+
+    builder.row(
+    InlineKeyboardButton(text="📁 Докуемнты для заселения", callback_data="dorm_docs"),
+    InlineKeyboardButton(text="🔙 Назад", callback_data="back")
+    )
+
     return builder.as_markup()
