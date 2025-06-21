@@ -7,12 +7,18 @@ logging.info('config successfully config')
 bot = Bot(token=config.tg_bot.token)
 dp = Dispatcher()
 
-dp.include_router(user_handlers.router)
-logging.info('bot catched some command from his arsenal and router imported and worked')
-dp.include_router(other_handlers.router)
-logging.debug('hadlers stopped work')
-
-
+амввма
+мавмвам
+вам
+ва
+мав
+м
+вам
+авм
+ва
+мав
+ма
+в
 
 
 if __name__ == '__main__':
