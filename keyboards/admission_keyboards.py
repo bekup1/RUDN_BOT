@@ -98,6 +98,20 @@ def back_to_mag():
     ])
     return keyboard
 
+def back_to_asp():
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="aspirant")]
+    ])
+    return keyboard
+
+def back_to_ord():
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="ordinat")]
+    ])
+    return keyboard
+
+
+
 def bacavriat_keyboard():
     builder = InlineKeyboardBuilder()
 
@@ -116,6 +130,19 @@ def bacavriat_keyboard():
 
 
 
+def mag_admission_keyboard():
+    builder = InlineKeyboardBuilder()
+
+
+    builder.row(
+    InlineKeyboardButton(text="📁 Бюджет", callback_data="mag_budget"),
+    InlineKeyboardButton(text="💰 Грант", callback_data="mag_grant"),   
+    InlineKeyboardButton(text="📁 Целевое обучение", callback_data="mag_purpose_study"),
+    InlineKeyboardButton(text="📁 Платное обучение", callback_data="mag_pay_study"),
+    InlineKeyboardButton(text="🔙 Назад", callback_data="magistr"),
+    width=1)
+   
+    return builder.as_markup()
 
 
 
@@ -139,9 +166,9 @@ def aspirantura_keyboard():
 
 
     builder.row(
-    InlineKeyboardButton(text="📁 Сроки приёма в аспирантуру", callback_data="dorm_docs"),
-    InlineKeyboardButton(text="💰 Индивидуальные достижения", callback_data="dorm_pay"),   
-    InlineKeyboardButton(text="📁 Стипендии для аспирантов", callback_data="dorm_docs"),
+    InlineKeyboardButton(text="📁 Сроки приёма в аспирантуру", callback_data="asp_sroki"),
+    InlineKeyboardButton(text="💰 Индивидуальные достижения", callback_data="asp_individual"),   
+    InlineKeyboardButton(text="📁 Стипендии для аспирантов", callback_data="asp_stipend"),
     InlineKeyboardButton(text="🔙 Назад", callback_data="admission"),
     width=1)
 
@@ -153,9 +180,9 @@ def ordinatura_keyboard():
 
 
     builder.row(
-    InlineKeyboardButton(text="📁 Сроки приёма в ординатуру", callback_data="dorm_docs"),
-    InlineKeyboardButton(text="🪜 Индивидуальные достижения", callback_data="dorm_steps_get"),
-    InlineKeyboardButton(text="💰 Стипендия для ординаторовя", callback_data="dorm_pay"),   
+    InlineKeyboardButton(text="📁 Сроки приёма в ординатуру", callback_data="ord_priem"),
+    InlineKeyboardButton(text="🪜 Индивидуальные достижения", callback_data="ord_individual"),
+    InlineKeyboardButton(text="💰 Стипендия для ординаторовя", callback_data="ord_stipend"),   
     InlineKeyboardButton(text="🔙 Назад", callback_data="admission"),
     width=1)
 
