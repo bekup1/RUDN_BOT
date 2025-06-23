@@ -15,7 +15,7 @@ def main_study_keyboard():
     builder.add(
         InlineKeyboardButton(text="📚 ТУИС", web_app=WebAppInfo(url='https://esystem.rudn.ru/')),
         InlineKeyboardButton(text="📖 Библиотека",web_app=WebAppInfo(url='https://mega.rudn.ru/MegaPro/Web' )),
-        InlineKeyboardButton(text="🗓 Расписание занятий", callback_data="study_schedule"),
+        InlineKeyboardButton(text="🗓 Справочник Преподавателя",  web_app=WebAppInfo(url="https://teachers-handbook.rudn.ru/")),
         InlineKeyboardButton(text="💬 Форум студентов", url='https://t.me/RUDNCAMPUS'),
         InlineKeyboardButton(text="🔙 Назад", callback_data="main_menu")
     )
