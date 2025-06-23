@@ -18,8 +18,10 @@ def main_menu_keyboard():
         InlineKeyboardButton(text="📝 Поступление", callback_data="admission"),
         InlineKeyboardButton(text="❤️ Жизнь в РУДН", callback_data="campus_life"),
         InlineKeyboardButton(text="🌐 Официальный сайт", web_app=WebAppInfo(url="https://www.rudn.ru/")),
-        InlineKeyboardButton(text="❓ Помощь", callback_data="help")
+        InlineKeyboardButton(text="🧭 Навигация по боту", callback_data="navigation")
     )
+
+
     
     builder.adjust(2, 2, 1, 1)  
     

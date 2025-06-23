@@ -5,7 +5,7 @@ from aiogram.client.default import DefaultBotProperties
 from logging_setting.logging import setup_logging
 from aiogram.enums import ParseMode
 from config_data.config import Config , load_config
-from handlers import other_handlers, user_handlers
+from handlers import other_handlers, user_handlers , admission_handlers , setting_handlers
 import logging
 from keyboards.menu_keyboards import set_main_menu
 
@@ -25,8 +25,9 @@ async def main():
 
     await set_main_menu(bot)
 
-
+    dp.include_router(setting_handlers.router)
     dp.include_router(user_handlers.router)
+    dp.include_router(admission_handlers.router)
     logging.info('bot catched some command from his arsenal and router imported and worked')
     dp.include_router(other_handlers.router)
     logging.debug('hadlers stopped work')
