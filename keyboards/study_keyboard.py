@@ -23,3 +23,4 @@ def main_study_keyboard():
     builder.adjust(2, 2, 1)   
 
     return builder.as_markup()
+

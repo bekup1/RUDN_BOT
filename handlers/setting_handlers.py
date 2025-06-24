@@ -32,6 +32,7 @@ identification: Any
 
 @router.message(Command(commands='setting'))
 async def process_help_command(message: Message):
+
     await message.answer(text=f'выберите вашу секцию', reply_markup=setting_section_keyboard())
     
     if message.from_user.id  in user_db:
@@ -62,13 +63,13 @@ async def process_faculty_press(callback: CallbackQuery,
     user_db[callback.from_user.id]['institut'] = callback_data.institut  
 
     if callback_data.institut == 'humanitarian':
-        await callback.message.answer(text="выберите ваш факультет", reply_markup=setting_faculty_humanitarian_keyboard())
+        await callback.message.edit_text(text="выберите ваш факультет", reply_markup=setting_faculty_humanitarian_keyboard())
     elif callback_data.institut == 'foreign_languages':
-        await callback.message.answer(text="выберите ваш факультет", reply_markup=setting_faculty_foreign_languages_keyboard())
+        await callback.message.edit_text(text="выберите ваш факультет", reply_markup=setting_faculty_foreign_languages_keyboard())
     elif callback_data.institut == 'math_computer_science':
-        await callback.message.answer(text="выберите ваш факультет", reply_markup=setting_faculty_math_computer_science_keyboard())
+        await callback.message.edit_text(text="выберите ваш факультет", reply_markup=setting_faculty_math_computer_science_keyboard())
     elif callback_data.institut == 'physics_technology':
-        await callback.message.answer(text="выберите ваш факультет", reply_markup=setting_faculty_physics_technology_keyboard())
+        await callback.message.edit_text(text="выберите ваш факультет", reply_markup=setting_faculty_physics_technology_keyboard())
     
     await callback.answer()
 
@@ -78,7 +79,7 @@ async def process_group_press(callback: CallbackQuery,
                                  callback_data: User_setting_CallbackFactory):
     user_db[callback.from_user.id]['program'] = callback_data.faculty  
 
-    await callback.message.answer(text="выберите вашу группу", reply_markup=setting_group_keyboard())
+    await callback.message.edit_text(text="выберите вашу группу", reply_markup=setting_group_keyboard())
 
     await callback.answer()
 
@@ -87,12 +88,17 @@ async def process_group_press(callback: CallbackQuery,
                                  callback_data: User_setting_CallbackFactory):
     user_db[callback.from_user.id]['group'] = callback_data.group  
 
-    await callback.message.answer(text="Вы успешно сохранили настройки. Ваши параметры:", reply_markup=back_to_my_rudn_keyboard())
+    await callback.message.edit_text(text="Вы успешно сохранили настройки. Ваши параметры:\n\n"
+        f"Секция: {user_db[callback.from_user.id]['section']}\n"
+        f"Институт: {user_db[callback.from_user.id]['institut']}\n"
+        f"Программа: {user_db[callback.from_user.id]['program']}\n"
+        f"Группа: {user_db[callback.from_user.id]['group']}\n\n\
+            чтобы изменить данные, нажмите на /setting", reply_markup=back_to_my_rudn_keyboard())
 
     await callback.answer()
 
 @router.callback_query(F.data == 'back_to_my_rudn')
 async def process_back_to_my_rudn(callback: CallbackQuery):
-    await callback.message.answer(text=LEXICON_RU['/my_rudn'], reply_markup=main_menu_keyboard())
+    await callback.message.edit_text(text=LEXICON_RU['/my_rudn'] , reply_markup=main_menu_keyboard())
     await callback.answer()
 

@@ -13,13 +13,14 @@ from aiogram import Router, F
 from lexicon.lexicon_ru import LEXICON_RU, LEXICON_COMMANDS, LEXICON_RU_ADMISSION
 import logging
 from logging_setting.logging import setup_logging
-from keyboards.main_keyboard import main_menu_keyboard
+from keyboards.main_keyboard import main_menu_keyboard 
 
-
+from keyboards.setting_keyboard import back_to_my_rudn_keyboard
 from database_my.database import user_db 
 
-from keyboards.my_rudn_keyboards import main_my_rudn_keyboard
+from keyboards.my_rudn_keyboards import main_my_rudn_keyboard 
 from aiogram.types import FSInputFile
+from keyboards.life_rudn_keyboards import main_life_rudn_keyboard
 
 
 router = Router()
@@ -64,4 +65,27 @@ async def process_my_rudn(callback: CallbackQuery):
     )
     await callback.answer()
 
-    
+@router.callback_query(F.data == 'my_shedule')
+async def process_my_shedule(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text='когда разработчик выучит базы данных, то тут будет ваше расписание на основе вашей учебной группы',
+        reply_markup=back_to_my_rudn_keyboard()
+    )
+    await callback.answer()
+
+@router.callback_query(F.data == 'my_section')
+async def process_my_section(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text='когда разработчик выучит базы данных, то тут будет ваша секция на основе вашей секции и учебной группы',
+        reply_markup=back_to_my_rudn_keyboard()
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'navigation')
+async def process_navigation(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text=LEXICON_RU['navigation'],
+        reply_markup=main_menu_keyboard()
+    )
+    await callback.answer()
